@@ -1,21 +1,21 @@
-class ListItemsController < ApplicationController
+class ListItemsController < ProtectedController
   before_action :set_list_item, only: [:show, :update, :destroy]
 
   # GET /list_items
   def index
-    @list_items = ListItem.all
+    @list_items = current_user.list_items.all
 
     render json: @list_items
   end
 
   # GET /list_items/1
   def show
-    render json: @list_item
+    render json: ListItem.find(params[:id])
   end
 
   # POST /list_items
   def create
-    @list_item = ListItem.new(list_item_params)
+    @list_item = current_user.list_items.build(list_item_params)
 
     if @list_item.save
       render json: @list_item, status: :created, location: @list_item
@@ -41,7 +41,7 @@ class ListItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list_item
-      @list_item = ListItem.find(params[:id])
+      @list_item = current_user.list_items.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
