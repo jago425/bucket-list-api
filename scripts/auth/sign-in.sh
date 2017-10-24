@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# API="${API_ORIGIN:-https://fathomless-lake-16939.herokuapp.com}"
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/sign-in"
 curl "${API}${URL_PATH}" \

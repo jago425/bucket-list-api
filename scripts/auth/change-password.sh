@@ -1,6 +1,6 @@
 #!/bin/bash
-
-API="${API_ORIGIN:-http://localhost:4741}"
+API="${API_ORIGIN:-https://fathomless-lake-16939.herokuapp.com}"
+# API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/change-password"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
